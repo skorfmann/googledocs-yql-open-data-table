@@ -30,6 +30,6 @@
         //return results as XML using e4x
         response.object = res;
     ]]></execute> 
-    </select>
+    </insert>
   </bindings>
 </table>
