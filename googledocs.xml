@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd">
+  <meta>
+    <author>Sebastian Korfmann</author>
+    <documentationURL>http://www.google.com/google-d-s/forms</documentationURL>
+    <description>Post to google spreadsheets through a form</description>
+    <!-- nice reverse geocoding -->
+    <sampleQuery>insert into {table} (name, email) values ('sebastian', 'test@example.com')</sampleQuery>
+    
+  </meta>
+  <bindings>
+    <insert itemPath="" produces="JSON">
+      <urls>
+        <url>https://docs.google.com/spreadsheet/formResponse?formkey={formkey}&entry.0.single={email}&entry.2.single={name}</url>
+      </urls>
+      <inputs>
+        <key id='name' type='xs:string' paramType='variable' required="false" />
+        <key id='email' type='xs:string' paramType='variable' required="true" />
+      </inputs>
+      <execute><![CDATA[
+
+        var res = request.post().response;
+        
+        y.log(res);
+  
+        //return results as XML using e4x
+        response.object = res;
+    ]]></execute> 
+    </select>
+  </bindings>
+</table>
