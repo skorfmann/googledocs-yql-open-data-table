@@ -19,12 +19,10 @@
         <key id='formkey' type='xs:string' paramType='path' required="true" />
       </inputs>
       <execute><![CDATA[
-        var res = request.post().response;
-        
-        y.log(res);
+        request.post().response;
   
         //return results as XML using e4x
-        response.object = res;
+        response.object = <result>success</result>
     ]]></execute> 
     </insert>
   </bindings>
