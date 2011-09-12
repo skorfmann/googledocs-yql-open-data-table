@@ -11,15 +11,19 @@
   <bindings>
     <insert itemPath="" produces="JSON">
       <urls>
-        <url>https://docs.google.com/spreadsheet/formResponse?formkey={formkey}&entry.0.single={email}&entry.2.single={name}</url>
+        <url>https://docs.google.com/spreadsheet/formResponse</url>
       </urls>
       <inputs>
         <key id='name' type='xs:string' paramType='variable' required="false" />
         <key id='email' type='xs:string' paramType='variable' required="true" />
       </inputs>
       <execute><![CDATA[
-
-        var res = request.post().response;
+        var data = {
+          'entry.0.single': email,
+          'entry.2.single': name,
+          'formkey': formkey
+        }
+        var res = request.post(data).response;
         
         y.log(res);
   
