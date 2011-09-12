@@ -11,12 +11,12 @@
   <bindings>
     <insert itemPath="" produces="JSON">
       <urls>
-        <url>https://docs.google.com/spreadsheet/formResponse</url>
+        <url>https://docs.google.com/spreadsheet/formResponse?formkey={formkey}&amp;entry.0.single={email}&amp;entry.2.single={name}</url>
       </urls>
       <inputs>
-        <key id='entry.2.single' type='xs:string' paramType='query' required="false" />
-        <key id='entry.0.single' type='xs:string' paramType='query' required="true" />
-        <key id='formkey' type='xs:string' paramType='query' required="true" />
+        <key id='name' type='xs:string' paramType='path' required="false" />
+        <key id='email' type='xs:string' paramType='path' required="true" />
+        <key id='formkey' type='xs:string' paramType='path' required="true" />
       </inputs>
       <execute><![CDATA[
         var res = request.post().response;
